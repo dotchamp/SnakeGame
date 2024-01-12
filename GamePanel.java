@@ -25,6 +25,7 @@ public class GamePanel extends JPanel implements ActionListener {
     boolean running = false;
     Timer timer;
     Random  random;
+    Button button;
     GamePanel() {
 
         random =  new Random();
@@ -49,13 +50,10 @@ public void paintComponent(Graphics g) {
 
 public void draw(Graphics g) {
         if (running) {
-            for (int i = 0; i < SCREEN_HEIGHT / UNIT_SIZE; i++) {
-                g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, SCREEN_HEIGHT);
-                g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
-            }
-
-            g.setColor(Color.red);
-            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
+//            for (int i = 0; i < SCREEN_HEIGHT / UNIT_SIZE; i++) {
+//                g.drawLine(i * UNIT_SIZE, 0, i * UNIT_SIZE, SCREEN_HEIGHT);
+//                g.drawLine(0, i * UNIT_SIZE, SCREEN_WIDTH, i * UNIT_SIZE);
+//            }
 
             for (int i = 0; i < bodyParts; i++) {
                 if (i == 0) {
@@ -72,6 +70,8 @@ public void draw(Graphics g) {
             FontMetrics metrics = getFontMetrics(g.getFont());
             g.drawString("Score : " + applesEaten,(SCREEN_WIDTH-metrics.stringWidth("Game Over : ")),g.getFont().getSize());
 
+            g.setColor(Color.red);
+            g.fillOval(appleX, appleY, UNIT_SIZE, UNIT_SIZE);
         }else {
             gameOver(g);
         }
